@@ -1,0 +1,15 @@
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full screen height */
+  background-color: #333; /* Your chosen background color */
+  color: white; /* Text color */
+  font-family: 'Arial', sans-serif; /* Your chosen font */
+}
+
+.title {
+  margin-bottom: 20px; /* Space between title and search bar */
+  font-size: 2em; /* Title size */
+}

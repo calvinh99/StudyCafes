@@ -1,0 +1,14 @@
+.search-input {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 300px; /* Or your specified width */
+  max-width: 80%; /* Ensures responsiveness */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  font-size: 1em; /* Text size within the input */
+}
+
+.search-input:focus {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Different shadow for focus */
+}
