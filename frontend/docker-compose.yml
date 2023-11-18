@@ -1,0 +1,11 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      target: development
+    ports:
+      - "4200:4200" # map host port to container port, so access from 127.0.0.1:4200 in browser
+    volumes:
+      - .:/app # map current directory '.' to '/app' in container
+      - /app/node_modules # exclude node_modules from mapping due to Error: "installed esbuild for another platform"
