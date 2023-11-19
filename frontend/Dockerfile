@@ -1,9 +1,8 @@
 # ------------------------------------------------------------------------------
-# DEVELOPMENT CONTAINER
+# Base Stage
 # ------------------------------------------------------------------------------
-
 # Use Node 18 as the base image
-FROM node:18.18.2-alpine3.17 as development
+FROM node:18.18.2-alpine3.17 as base
 
 # Set working directory in the container to /app
 WORKDIR /app
@@ -13,6 +12,12 @@ COPY package.json package-lock.json ./
 
 # Install the project dependencies
 RUN npm install
+
+
+# ------------------------------------------------------------------------------
+# Development Stage
+# ------------------------------------------------------------------------------
+FROM base as development
 
 # Copy the rest of the project files to the container
 COPY . .
@@ -24,22 +29,33 @@ EXPOSE 4200
 # npm start is defined in package.json "scripts" section—"start": ...
 CMD ["npm", "start"]
 
+
 # ------------------------------------------------------------------------------
-# PRODUCTION CONTAINER
+# Build Stage
 # ------------------------------------------------------------------------------
-# Build the Angular app
-FROM node:18.18.2-alpine3.17 as build-stage
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
+FROM base as build-stage
+
 COPY . .
+
+# run the build script in package.json, -- means the end of npm run build arguments
+# so then --output-path=./dist/out is passed to ng build inside the build script
 RUN npm run build -- --output-path=./dist/out
 
+
+# ------------------------------------------------------------------------------
+# Production Stage
+# ------------------------------------------------------------------------------
 # Setup NGINX to serve the built Angular app
-FROM nginx:alpine
+FROM nginx:alpine as production
+
+# Delete initial nginx stuff
+RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the built Angular app from the build stage to the NGINX web server directory
-COPY --from=build-stage /app/dist/out/ /usr/share/nginx/html
+# we need to specify browser since we are using Angular Universal
+# so there's a server dir and a prerendered-routes.json that gives SEO and faster initial load times
+# we def. gotta use that later
+COPY --from=build-stage /app/dist/out/browser /usr/share/nginx/html
 
 # Default HTTP port
 EXPOSE 80
