@@ -1,0 +1,30 @@
+# Name of the workflow
+name: Continuous Integration
+
+# Specifies when the workflow should run
+on:
+  push: # Triggers the workflow on push events for the main branch
+    branches: [ main ]
+  pull_request: # Also triggers the workflow on pull requests
+    branches: [ main ]
+  workflow_dispatch: # Manual trigger
+
+# Defines the jobs the workflow will run
+jobs:
+  docker-build-and-test: # Name of the job
+    runs-on: ubuntu-latest # Specifies the type of virtual host environment (latest Ubuntu)
+
+    steps: # Series of tasks that the job will execute, each step starts at an initial state (checked out repo)
+    - uses: actions/checkout@v2 # Checks out your repository under $GITHUB_WORKSPACE
+
+    # Build the Docker image using docker-compose, call it "app"
+    - name: Build Docker Image
+      run: |
+        cd frontend
+        docker-compose -f docker-compose.prod.yml build app
+    
+     # Run tests using the already built Docker image "app"
+    - name: Run Tests
+      run: |
+        cd frontend
+        docker-compose -f docker-compose.prod.yml run app npm test
