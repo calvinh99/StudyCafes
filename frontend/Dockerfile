@@ -37,6 +37,9 @@ FROM base as build-stage
 
 COPY . .
 
+# TODO: RUN npm test (doesn't work right now due to chrome, but don't want to install chrome
+# in the container for production, can either create new test stage, or delete chrome after)
+
 # run the build script in package.json, -- means the end of npm run build arguments
 # so then --output-path=./dist/out is passed to ng build inside the build script
 RUN npm run build -- --output-path=./dist/out
