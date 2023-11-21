@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: studycafesimage 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: studycafesimage
+  template:
+    metadata:
+      labels:
+        app: studycafesimage 
+    spec:
+      containers:
+        - name: studycafesimage 
+          image: studycafesacr.azurecr.io/studycafesimage
+          ports:
+          - containerPort: 80
