@@ -14,8 +14,7 @@ variables:
   dockerRegistryServiceConnection: 'a958bc9a-1c73-4ff4-969b-190ef0001f53'
   imageRepository: 'studycafesimage'
   containerRegistry: 'studycafesacr.azurecr.io'
-  angularAppPath: 'frontend'
-  dockerfilePath: '$(angularAppPath)/Dockerfile'
+  frontendDockerfilePath: 'frontend/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'studycafesacr02e8-auth'
 
@@ -37,17 +36,12 @@ stages:
       inputs:
         command: build
         repository: $(imageRepository)
+        Dockerfile: $(frontendDockerfilePath)
         arguments: --target production
-        buildContext: $(angularAppPath)
-        Dockerfile: $(dockerfilePath)
         tags: |
           $(tag)
+        containerRegistry: $(dockerRegistryServiceConnection)
 
-    # Add this step to print the values
-    - script: |
-        echo "Image Repository: $(imageRepository)"
-        echo "Tag: $(tag)"
-      displayName: 'Print variable values'
     - task: Docker@2
       displayName: 'Push an image'
       inputs:
