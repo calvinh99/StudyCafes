@@ -1,15 +1,25 @@
-.landing-container {
+.home-container {
+  position: relative; /* Allows absolute positioning of children */
+  height: 100vh; /* Full screen height */
+  background-color: #333; /* Your chosen background color */
+}
+
+.central-container {
+  width: 100%; /* Full width */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full screen height */
-  background-color: #333; /* Your chosen background color */
-  color: white; /* Text color */
-  font-family: 'Arial', sans-serif; /* Your chosen font */
+  position: absolute; /* Absolute position */
+  top: 35%; /* Position from the top */
 }
 
 .title {
+  background-image: linear-gradient(90deg, #FF8574 0%, #FFC188 50%, #FF7764 100%); /* Define the linear gradient with color stops */
+  -webkit-background-clip: text; /* Clip the background to the text */
+  color: transparent; /* Set the text color to transparent */
+  text-align: center; /* Center the text */
+  padding: 0 40px; /* Add some padding */
   margin-bottom: 20px; /* Space between title and search bar */
   font-size: 2em; /* Title size */
 }

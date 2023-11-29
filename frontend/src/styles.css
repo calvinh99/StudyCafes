@@ -2,4 +2,6 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden; /* Prevent scrolling */
+  color: white; /* Text color */
+  font-family: 'Arial', sans-serif; /* Your chosen font */
 }
