@@ -3,5 +3,5 @@ body {
   padding: 0;
   overflow: hidden; /* Prevent scrolling */
   color: white; /* Text color */
-  font-family: 'Arial', sans-serif; /* Your chosen font */
+  font-family: Roboto, 'Arial', sans-serif; /* Your chosen font */
 }

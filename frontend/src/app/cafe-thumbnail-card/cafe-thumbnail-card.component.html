@@ -1,0 +1,41 @@
+<div class="cafe-card">
+  <div class="cafe-image-div">
+    <img src="{{ cafe['img-url'] }}" alt="Cafe image" class="cafe-image">
+  </div>
+  <div class="cafe-content">
+    <div class="cafe-header">
+      <span class="cafe-name">{{ cafe.name }}</span>
+      <span class="cafe-address">{{ cafe.address }}</span>
+    </div>
+    <div class="cafe-details">
+      <div class="cafe-detail">
+        <span class="detail-title">Hours</span>
+        <span class="detail-content">
+          <!-- Check if the cafe is open 24 hours -->
+          <ng-container *ngIf="cafe['24h']; else timeRange">
+            24h
+          </ng-container>
+          <!-- Template for displaying the open and close times -->
+          <ng-template #timeRange>
+            {{ cafe['open-time'] }} - {{ cafe['close-time'] }}
+          </ng-template>
+        </span>
+      </div>
+      <div class="cafe-detail">
+        <span class="detail-title">Seats</span> <span class="detail-content">~{{ cafe['num-seats'] }}</span>
+      </div>
+      <div class="cafe-detail">
+        <span class="detail-title">Wifi</span> <span class="detail-content">{{ cafe['has-wifi'] ? 'Yes' : 'No' }}</span>
+      </div>
+      <div class="cafe-detail">
+        <span class="detail-title">Charging</span> <span class="detail-content">{{ cafe['has-outlets'] ? 'Yes' : 'No' }}</span>
+      </div>
+      <div class="cafe-detail">
+        <span class="detail-title">Restrooms</span> <span class="detail-content">{{ cafe['has-restrooms'] ? 'Yes' : 'No' }}</span>
+      </div>
+      <div class="cafe-detail">
+        <span class="detail-title">Atmosphere</span> <span class="detail-content">{{ cafe.atmosphere }}</span>
+      </div>
+    </div>
+  </div>
+</div>

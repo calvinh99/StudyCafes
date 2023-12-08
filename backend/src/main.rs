@@ -8,7 +8,9 @@ async fn greet() -> impl Responder {
 }
 
 async fn create_mongo_client() -> mongodb::error::Result<Client> {
-    let mut client_options = ClientOptions::parse("mongodb+srv://sc-backend:yMOeAqDodXTJeqUL@sc-cluster-0.gr1dk0g.mongodb.net/?retryWrites=true&w=majority").await?;
+    dotenv::dotenv().ok();
+    let mongo_uri = std::env::var("MONGODB_URI").expect("MONGODB_URI must be set");
+    let mut client_options = ClientOptions::parse(&mongo_uri).await?;
     
     // set server api version
     let server_api = ServerApi::builder().version(ServerApiVersion::V1).build();

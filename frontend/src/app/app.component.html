@@ -1,6 +1,9 @@
 <div class="home-container">
   <div class="central-container">
     <h1 class="title">Search for the Best Study Cafes</h1>
-    <app-cafes-query-button></app-cafes-query-button>
+    <app-cafes-query-button (showCafesList)="onShowCafesList($event)"></app-cafes-query-button>
+  </div>
+  <div *ngIf="showCafes">
+    <app-cafes-list-popup [cafes]="cafes" (closePopup)="onClosePopup()"></app-cafes-list-popup>
   </div>
 </div>

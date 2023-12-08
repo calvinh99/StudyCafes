@@ -1,20 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { CafeDataService } from '../cafe-data.service';
 
 @Component({
   selector: 'app-cafes-query-button',
   standalone: true,
   imports: [CommonModule, HttpClientModule],
+  providers: [CafeDataService],
   templateUrl: './cafes-query-button.component.html',
   styleUrl: './cafes-query-button.component.css'
 })
 export class CafesQueryButtonComponent {
-  constructor(private http: HttpClient) {}
+  @Output() showCafesList = new EventEmitter<any[]>();
+
+  constructor(private cafeDataService: CafeDataService) {}
 
   onCafeQueryButtonClick() {
-    this.http.get('http://127.0.0.1:8000/api/test').subscribe(response => {
-      console.log('Response from backend:', response);
+    this.cafeDataService.fetchFromApi().subscribe(); // async
+    this.cafeDataService.fetchFromLocalStorage().subscribe(data => {
+      this.showCafesList.emit(data);
     });
   }
 }

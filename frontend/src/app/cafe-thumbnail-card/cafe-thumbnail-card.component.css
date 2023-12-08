@@ -1,0 +1,87 @@
+.cafe-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.cafe-image-div {
+  overflow: hidden;
+  border-radius: 16px;
+  width: 100%;
+  padding-top: 100%; /* Maintain a 1:1 aspect ratio */
+  position: relative; /* Allow the image to be positioned absolutely */
+}
+
+.cafe-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  /* This will align the image to the center */
+  transform: translate(-50%, -50%);
+  /* Cover will ensure the image fills the container */
+  object-fit: cover;
+}
+
+.cafe-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 4px;
+}
+
+.cafe-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Align the cafe name and the distance to the left and right respectively */
+  align-items: flex-end; /* Align the contents to the bottom */
+  gap: 10%; /* Add a minimum gap between the cafe name and the distance */
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-family: 'Inter', sans-serif;
+}
+
+.cafe-name {
+  font-size: 1.2em; /* TODO: Change to rem */
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.cafe-address {
+  font-size: clamp(12px, 1vw, 16px); /* TODO: Change to rem */
+  font-weight: normal;
+  color: #808080;
+  white-space: nowrap;
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Add ellipsis (...) for truncated text */
+  padding-bottom: 4px;
+}
+
+.cafe-details {
+  display: flex;
+  flex-wrap: wrap; /* Allow details to wrap to the next line */
+  gap: 3px 8px; /* Add a minimum gap between the details */
+  justify-content: flex-start; /* Align the details to the left */
+}
+
+.cafe-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end; /* Align the contents vertically */
+  gap: 4px; /* Add a minimum gap between the title and the content */
+  font-family: 'Roboto Condensed', sans-serif;
+  white-space: nowrap;
+}
+
+.detail-title {
+  font-size: 1em;
+  font-weight: bold;
+  color: #555555; /* Darkish grey */
+}
+
+.detail-content {
+  font-size: 0.8em;
+  font-weight: normal;
+  color: #959595; /* Light grey */
+  padding-bottom: 1px;
+}
