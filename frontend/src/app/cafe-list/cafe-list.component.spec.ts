@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CafesListPopupComponent } from './cafes-list-popup.component';
+import { CafeListComponent } from './cafe-list.component';
 
-describe('CafesListPopupComponent', () => {
-  let component: CafesListPopupComponent;
-  let fixture: ComponentFixture<CafesListPopupComponent>;
+describe('CafeListComponent', () => {
+  let component: CafeListComponent;
+  let fixture: ComponentFixture<CafeListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CafesListPopupComponent]
+      imports: [CafeListComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CafesListPopupComponent);
+    fixture = TestBed.createComponent(CafeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

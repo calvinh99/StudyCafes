@@ -1,0 +1,20 @@
+<div class="card-container">
+  <div class="card-image">
+    <img [src]="cafe['img-url']" alt="{{ cafe.name }}">
+  </div>
+  <div class="card-content">
+    <h2 class="cafe-name">{{ cafe.name }}</h2>
+    <p class="cafe-address">{{ cafe.address }}</p>
+    <div class="cafe-details">
+      <p><strong>Hours</strong> <span class="detail-content">{{ cafe['24h'] ? 'Open 24 Hours' : (cafe['open-time'] + ' - ' + cafe['close-time']) }}</span></p>
+      <p><strong>Seats</strong> <span class="detail-content">{{ cafe['seats-desc'] }}</span></p>
+      <p><strong>Wifi</strong> <span class="detail-content">{{ cafe['wifi-desc'] }}</span></p>
+      <p><strong>Charging</strong> <span class="detail-content">{{ cafe['outlets-desc'] }}</span></p>
+      <p><strong>Restrooms</strong> <span class="detail-content">{{ cafe['restrooms-desc'] }}</span></p>
+      <p><strong>Atmosphere</strong> <span class="detail-content">{{ cafe.atmosphere }}</span></p>
+    </div>
+    <div class="card-actions">
+      <a [href]="cafe['google-maps-url']" target="_blank">Open in Google Maps</a>
+    </div>
+  </div>
+</div>

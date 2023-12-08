@@ -15,11 +15,50 @@
 }
 
 .title {
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 4px;
+}
+
+.gradient-title {
   background-image: linear-gradient(90deg, #FF8574 0%, #FFC188 50%, #FF7764 100%); /* Define the linear gradient with color stops */
+  background-clip: text;
   -webkit-background-clip: text; /* Clip the background to the text */
   color: transparent; /* Set the text color to transparent */
-  text-align: center; /* Center the text */
   padding: 0 40px; /* Add some padding */
-  margin-bottom: 20px; /* Space between title and search bar */
-  font-size: 2em; /* Title size */
+  padding-bottom: 6px;
+  font-size: 1.6em; /* Title size */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.cafe-query-button {
+  border: none;
+  border-radius: 24px;
+  padding: 10px 20px;
+  background-color: #676262;
+  color: #e7e7e7;
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.cafe-query-button:hover {
+  background-color: #514c4c;
+  color: #c1c1c1;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 999; /* Ensure this is below the card but above other content */
 }

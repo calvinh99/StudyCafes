@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CafeFullCardComponent } from './cafe-full-card.component';
+import { CafeCardComponent } from './cafe-card.component';
 
-describe('CafeFullCardComponent', () => {
-  let component: CafeFullCardComponent;
-  let fixture: ComponentFixture<CafeFullCardComponent>;
+describe('CafeCardComponent', () => {
+  let component: CafeCardComponent;
+  let fixture: ComponentFixture<CafeCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CafeFullCardComponent]
+      imports: [CafeCardComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CafeFullCardComponent);
+    fixture = TestBed.createComponent(CafeCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,9 +1,11 @@
 <div class="home-container">
   <div class="central-container">
-    <h1 class="title">Search for the Best Study Cafes</h1>
-    <app-cafes-query-button (showCafesList)="onShowCafesList($event)"></app-cafes-query-button>
+    <h1 class="title">Search for the<br><span class="gradient-title">Best Study Cafes</span></h1>
+    <button class="cafe-query-button" (click)="onCafeQueryButtonClick()">Near Hoboken Lightrail</button>
   </div>
   <div *ngIf="showCafes">
-    <app-cafes-list-popup [cafes]="cafes" (closePopup)="onClosePopup()"></app-cafes-list-popup>
+    <app-cafe-list [cafes]="cafes" (cafeSelected)="onCafeSelected($event)" (closePopup)="onClosePopup()"></app-cafe-list>
   </div>
+  <div class="overlay" *ngIf="selectedCafe"></div>
+  <app-cafe-card *ngIf="selectedCafe" [cafe]="selectedCafe" (closeCard)="onCloseCard()"></app-cafe-card>
 </div>

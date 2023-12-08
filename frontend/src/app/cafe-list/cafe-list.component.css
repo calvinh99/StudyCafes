@@ -1,3 +1,25 @@
+.cafe-list {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 480px;
+  width: 100%;
+  bottom: 0;
+  top: 15%; /* adjust this value to increase or decrease the distance from the top */
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  overflow: auto; /* add a scrollbar if the content overflows */
+  background-color: #ffffff;
+  color: #000000;
+  padding-top: 40px;
+  padding-bottom: 32px;
+}
+
+.cafe-item {
+  margin: 0;
+  padding: 0 32px 40px 32px; /* top right bottom left */
+}
+
 .cafe-card {
   display: flex;
   flex-direction: column;
